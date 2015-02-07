@@ -1,0 +1,165 @@
+
+<!DOCTYPE html><html><head><title>Big</title><meta charset='utf-8'><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link href='big.css' rel='stylesheet' type='text/css' />
+<style>
+  .google {
+    background-image: url(./images/google.png);
+    background-repeat: no-repeat;
+    background-position: left 25px;
+  }
+  .javascript {
+    background-image: url(./images/javascript.png);
+    background-repeat: no-repeat;
+    background-position: center 25px;
+    background-color: #fff;
+  }
+  .zero {
+    background-image: url(./images/zero.PNG);
+    background-repeat: no-repeat;
+    background-position: center 25px;
+
+  }
+  .four {
+    background-image: url(./images/tilegrid.png);
+    background-repeat: no-repeat;
+    background-position: center 40px;
+  }
+  .map {
+    background-image: url(./images/map.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .html1 {
+    background-image: url(./images/html1.png);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center 40px;
+  }
+  .map2 {
+    background-image: url(./images/map2.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .html2 {
+    background-image: url(./images/html2.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center 40px;
+  }
+  .leaflet-api {
+    background-image: url(./images/leafletapi.png);
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center 25px;
+  }
+  .map3 {
+    background-image: url(./images/map3.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .html3 {
+    background-image: url(./images/html3.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center 40px;
+  }
+  .map4 {
+    background-image: url(./images/map4.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .html4 {
+    background-image: url(./images/html4.png);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center 40px;
+  }
+  .tile-loading {
+    background-image: url(./images/tiles-loading.gif);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .slippy-map {
+    background-image: url(./images/slippy-map.gif);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .html {
+    background-image: url(./images/html.png);
+    background-repeat: no-repeat;
+    background-position: center 25px;
+    background-color: #fff;
+  }
+</style>
+<script src='big.js'></script>
+</head><body>
+<div>Débuter avec <strong>Leaflet</strong>!</div>
+<div>Cette présentation est sur GitHub <a href="http://tsamaya.github.io/maptime-alpes/leaflet-first-webmap">http://tsamaya.github.io/ maptime-alpes/leaflet-first-webmap</a>.</div>
+<div>Elle est fortement inspirée de la présentation de <a href="http://twitter.com/lyzidiamond">@lyzidiamond</a>.</div>
+<div><em>Salut!</em> je suis Arnaud. Je vie à <strong>Grenoble</strong>. Je travaille chez <em>esri France</em>. Je participe à <a href=http://maptime-alpes.com/>Maptime Alpes</a>.</div>
+<div>Parlons de <strong>web maps</strong>!</div>
+<div>Qu'est ce qu'une <em>web map</em>?</div>
+<div><strong>Avant tout:</strong> une web map est une <em>carte</em> sur le <em>web</em>.</div>
+<div><strong>(Heu.)</strong></div>
+<div><em>Comment</em> mettre des cartes sur le web?</div>
+<div data-bodyclass="html">HTML!</div>
+<div>Le <strong>HTML</strong> est le <em>langage</em> des sites web.</div>
+<div>Mais quand nous <strong>pensons</strong> web maps, nous pensons <em>interactivité</em>. Nous pensons...</div>
+<div data-bodyclass="google">Google Maps!</div>
+<div>Je me <strong>trompe</strong>?</div>
+<div>Nous voulons de l'<strong>interactivité</strong>. Nous voulons que les utilisateurs <em>agissent</em> avec nos cartes.</div>
+<div><em>Comment</em> ajoute-t-on de l'<strong>interactivité</strong> sur le web?</div>
+<div data-bodyclass="javascript">Javascript!</div>
+<div>Mais revenons <strong>à la base</strong> et parlons <em>d'une web map</em>.</div>
+<div>Une partie des diapos viennent de la présentation donnée ici par <a href="http://twitter.com/abenroberts ">Adam Roberts</a> <a href="http://maptime.github.io/anatomy-of-a-web-map">Anatomie d'une Web Map</a>. </div>
+<div>Parlons d'abord de  <em>tuiles</em>.</div>
+<div><strong>Tuiles Raster (images)</strong>, souvent. <em>Tuiles Vectorielle </em> dans certains cas.</div>
+<div>"... web maps sont constituées de nombreuses images carrées appelées <em>tuiles</em>."</div>
+<div>"Ces tuiles sont généralement de <strong>256x256 pixels</strong>, et sont positionnées <em>côte à côte</em> afin de créer une  <strong>grande image</strong>."</div>
+<div><a href="http://mapbox.com/developers/guide">Merci MapBox pour l'explication !</a></div>
+<div data-bodyclass="tile-loading">Toutes ces tuiles se chargent <em>plus vite</em> qu'une seule grande image.</div>
+<div data-bodyclass="slippy-map">Cela permet ensuite de <em>repositionner</em> la carte avec <strong>fluidité</strong>.</div>
+<div>Chaque <em>niveau de zoom</em> a son propre jeu de <strong>tuiles</strong>.</div>
+<div><em>Niveau de zoom 0:</em> <strong>1</strong> tuile pour le monde.</div>
+<div data-bodyclass="zero"></div>
+<div>A chaque <em>niveau de zoom</em>, le nombre de tuile augmente <strong>exponentiellement.</strong></div>
+<div><em>Niveau de zoom 1:</em> <strong>4</strong> tuiles pour le monde.</div>
+<div data-bodyclass="four"></div>
+<div><em>Niveau de zoom 2:</em> <strong>16</strong> tuiles pour le monde.</div>
+<div>... <strong>vous avez compris l'idée.</strong></div>
+<div>Les cartes tuilées sont <em>des images statiques sur internet</em>.</div>
+<div><em>Super!</em> Quel est le rapport avec <a href="http://leafletjs.com">Leaflet</a>?</div>
+<div>Ces fichiers <strong>existent quelque part</strong> sur une page web. Ils doivent savoir <em>quand</em> se charger et quand <strong>réagir</strong> aux clics et autres tirer/glisser.</div>
+<div>Leaflet est une <strong>librairie Javascript</strong> permettant de <em>faire cela</em>.</div>
+<div>Ajouter des <strong>libraries Javascript</strong> dans vos pages c'est <em>étendre</em> les possibilités de votre code.</div>
+<div>Vous avez <strong>accès</strong> grâce à la librairie à de nombreux <em>outils</em> pour créer des cartes et leur donner des <strong>fonctionnalités</strong> usuelles.</div>
+<div data-bodyclass="leaflet-api"></div>
+<div>Pour tout savoir sur <em>Leaflet</em> allez sur <a href="http://leafletjs.com">leafletjs.com</a>.</div>
+<div><strong>Première chose</strong> que nous allons faire avec Leaflet: créer un <em>conteneur de carte</em>.</div>
+<div data-bodyclass="map"><pre><span>var map = L.map('leaflet-map');</span></pre></div>
+<div><pre><span>'leaflet-map'</span></pre> fait référence à un <strong>div</strong> où la carte va se positionner.</div>
+<div data-bodyclass="html1"></div>
+<div>Mais c'est <em>vide</em>. Nous n'avons ajouté aucune <strong>tuile</strong>. <em>Allons y!</em>.</div>
+<div>Il existe de nombreux <strong>jeux de tuiles gratuits</strong> sur internet. Nous allons utiliser un jeu de <a href="http://stamen.com">Stamen</a>.</div>
+<div data-bodyclass="map2"><pre><span>var map = L.map('leaflet-map').<br>setView([45.18, 5.72], 13);<br><br>L.tileLayer('http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png').<br>addTo(map);</span></pre></div>
+<div>Nous avons ajouté des <em>tuiles</em>, et centré la carte sur <strong>Grenoble</strong>, avec un <em>niveau de zoom</em>.</div>
+<div data-bodyclass="html2"></div>
+<div>Nous avons ainsi une carte de <em>référence</em> <strong>sans information</strong>, mais une <em>carte</em> tout de même.</div>
+<div>Que pouvons nous montrer sur <strong>la carte</strong>? Peut être <em>CoWork</em> où nous sommes.</div>
+<div><strong>Nous pouvons le faire!</strong></div>
+<div data-bodyclass="map3"><pre><span>L.marker([45.19129, 5.73332]).addTo(map);</span></pre></div>
+<div>Nous avons ajouté un <em>marker</em> aux coordonnées <strong>lat/lon</strong> de CoWork sur la carte.</div>
+<div data-bodyclass="html3"></div>
+<div><strong>Dernière chose:</strong> ajoutons une <em>popup</em> au marker. Un <strong>clic</strong> affichera <em>des informations.</em></div>
+<div data-bodyclass="map4"><br><br><pre><span>L.marker([45.19129, 5.73332])<br>.bindPopup("CoWork").addTo(map);</span></pre></div>
+<div><strong>Associons une popup</strong> au marker indiquant ainsi <em>CoWork</em>.</div>
+<div data-bodyclass="html4"></div>
+<div><strong>C'est fait!</strong> Nous avons créer une <em>web map</em>!</div>
+<div>Vous pouvez trouver cet exemple sur <a href="http://tsamaya.github.io/maptime-alpes/leaflet-first-webmap/map.html">contenu masqué</a>.</div><!--gis.tsamaya.net/ maptime/map.html</a>.</div>-->
+<div>Est-ce que c'est <strong>fun?</strong>!</div>
+<div><em>Vous</em> allez maintenant faire votre <strong>carte</strong>!</div>
+<div>Merci!</div>
+<div>N'hésitez pas à me contacter sur Twitter <a href="http://twitter.com/arferrand">@arferrand</a>!</div>
+
+</body>
+</html>
