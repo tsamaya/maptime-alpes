@@ -48,7 +48,7 @@
 
     var markers = new L.MarkerClusterGroup();
     // geojson
-    var jsonpTest = L.geoJson.ajax("http://sanfrancisco.crimespotting.org/crime-data?format=json&count=2000&dstart=2014-12-01", {
+    var jsonpTest = L.geoJson.ajax("http://sanfrancisco.crimespotting.org/crime-data?format=json&count=2000&dstart=2014-12-01&dend=2015-02-01", {
       pointToLayer: function(feature, latlng) {
         var marker = L.marker(latlng);
         markers.addLayer(marker);

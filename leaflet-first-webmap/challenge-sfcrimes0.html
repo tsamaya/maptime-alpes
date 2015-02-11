@@ -44,7 +44,7 @@
     grayscale.addTo(map);
 
     // geojson
-    var jsonpTest = L.geoJson.ajax("http://sanfrancisco.crimespotting.org/crime-data?format=json&count=2000&dstart=2014-12-01", {
+    var jsonpTest = L.geoJson.ajax("http://sanfrancisco.crimespotting.org/crime-data?format=json&count=2000&dstart=2014-12-01&dend=2015-02-01", {
       onEachFeature: popUp,
       dataType:"jsonp"
     }).addTo(map);
