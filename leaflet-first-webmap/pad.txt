@@ -1,0 +1,43 @@
+Bienvenue!
+
+ressources pour l'atelier Leaflet:
+présentation : http://tsamaya.github.io/maptime-alpes/leaflet-first-webmap et bientot sur http://maptime-alpes.com/leaflet-first-webmap
+resources :
+présentation + sources exercices : bientot sur le gitHub https://github.com/MaptimeAlpes/leaflet-first-webmap
+
+Leaflet
+http://leafletjs.com/
+plugins : 
+http://leafletjs.com/plugins.html
+https://www.mapbox.com/mapbox.js/plugins/
+
+Exercices
+structure de base : http://jsbin.com/hivula
+centrer la carte sur Grenoble lat/lon [45.18, 5.72] et zoom 13
+Stamen Watercolor URL : 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png'
+Marker CoWork lat/lon [45.19129, 5.73332]
+autres fonds de plan : http://leaflet-extras.github.io/leaflet-providers/preview/
+
+Challenges        
+carte des délits à SF
+         données au format geojson http://sanfrancisco.crimespotting.org/crime-data?format=json&count=10&dstart=2014-12-01
+         api : http://sanfrancisco.crimespotting.org/api
+         Faire une carte avec 2000 points  affichage en cluster
+carte des tremblements de terre
+données http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson, 
+http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson
+
+Un exemple interessant de mise en oeuvre de leaftlet avec openstreetmap
+http://umap.openstreetmap.fr/
+
+Editeurs texte / javascript / html / css
+Brackets: http://brackets.io/
+Sublime Text: http://www.sublimetext.com/3
+Notepad++: http://notepad-plus-plus.org/
+VI / VIM : http://www.vim.org/download.php
+    
+Contacts:
+    le site : http://maptime-alpes.com/
+    Meetup : http://www.meetup.com/MaptimeAlpes/
+    twitter https://twitter.com/MaptimeAlpes
+    GitHub : https://github.com/MaptimeAlpes

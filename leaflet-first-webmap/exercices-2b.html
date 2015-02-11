@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.ie.css" />
+  <![endif]-->
+  <style type="text/css">
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    html, body, #leaflet-map {
+      height: 90%;
+    }
+    #basemaps-wrapper {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      background: white;
+      padding: 10px;
+    }
+    #basemaps {
+      margin-bottom: 5px;
+    }
+
+  </style>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+<body>
+  <div id="leaflet-map"></div>
+  <div id='basemaps-wrapper' class='leaflet-bar'>
+    <select name='basemaps' id='basemaps'>
+      <option value='watercolor'>Stamen watercolor<options>
+      <option value='toner'>Stamen toner<options>
+      <option value='pinterest'>Mapbox pinterest</option>
+      <option value='space'>Mapbox space<options>
+      <option value='osm'>OpenStreetMap<options>
+      <option value='aerial'>MapQuest Aerial<options>
+      <option value='imagery'>esri Imagery<options>
+    </select>
+  </div>
+  <script>
+var map = L.map('leaflet-map').setView([45.18, 5.72], 13);
+var layer = L.tileLayer('http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png').addTo(map);
+L.marker([45.19129, 5.73332]).bindPopup("Cowork In Grenoble<br/>12 rue Servan<br/>Meetup MapTime-Alpes").addTo(map);
+
+var basemaps = document.getElementById('basemaps');
+basemaps.addEventListener('change', function() {
+  changeBasemap(basemaps.value);
+});
+
+function changeBasemap(basemap) {
+  if (layer) {
+    map.removeLayer(layer);
+  }
+  switch (basemap) {
+    case 'toner':
+      layer = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png').addTo(map);
+      break;
+    case 'terrain':
+      layer = L.tileLayer('http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png').addTo(map);
+      break;
+    case 'pinterest':
+      layer = L.tileLayer('http://{s}.tiles.mapbox.com/v3/pinterest.map-ho21rkos/{z}/{x}/{y}.png').addTo(map);
+      break;
+    case 'space':
+      layer = L.tileLayer('http://{s}.tiles.mapbox.com/v3/eleanor.ipncow29/{z}/{x}/{y}.png').addTo(map);
+      break;
+    case 'osm':
+      layer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+      break;
+      case 'aerial':
+      layer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png', {subdomains: '1234'}).addTo(map);
+      break;
+    case 'imagery':
+      layer= L.tileLayer( 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}').addTo(map);
+      break;
+    default:
+      layer = L.tileLayer('http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png').addTo(map);
+  break;      
+  }
+}
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.ie.css" />
+  <![endif]-->
+  <style type="text/css">
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    html, body, #leaflet-map {
+      height: 100%;
+    }
+    .leaflet-popup-content {
+      max-height: 400px;
+      overflow-y: scroll;
+    }
+
+  </style>
+  <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+</head>
+<body>
+  <div id="leaflet-map"></div>
+
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <!--<script src="//rawgit.com/calvinmetcalf/leaflet-ajax/master/dist/leaflet.ajax.min.js"></script>-->
+  <script>
+    // MAP
+    var map = L.map('leaflet-map', {
+      center: [0.0, 0.0],
+      zoom: 3,
+    });
+    // copyright
+    var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+      '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+    // mapbox gray
+    var grayscale = L.tileLayer(mbUrl, {
+      id: 'examples.map-20v6611k',
+      attribution: mbAttr
+    });
+    grayscale.addTo(map);
+
+    // geojson
+    // var jsonpTest = L.geoJson.ajax("./all_day.geojson", {
+    //   onEachFeature: popUp,
+    //   dataType: 'jsonp'
+    // }).addTo(map);
+
+    $.ajax({
+      url: "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
+      cache: true,
+      success: function(data) {
+        // make geojson layer from data
+        var geojsonlayer = L.geoJson(data, {
+          onEachFeature: popUp
+        });
+
+
+        // fit data to map
+        map.fitBounds(geojsonlayer.getBounds());
+
+        map.addLayer(geojsonlayer);
+
+      }
+    });
+
+    // popup Function(feature, layer)
+    function popUp(f, l) {
+      var content = "<table class=\"marker-properties\"><tbody>";
+      var out = [];
+      var regexp = new RegExp('^http');
+      var value;
+      if (f.properties) {
+        for (var key in f.properties) {
+          if (regexp.test(f.properties[key])) {
+            value = "<a href=\"" + f.properties[key] + "\">" + f.properties[key] + "</a>";
+          } else {
+            value = f.properties[key];
+          }
+          out.push("<tr class=\"unchanged\"><th>" + key + "</th><td>" + value);
+        }
+        content = content + out.join("</td></tr>") + "</tbody></table>";
+        l.bindPopup(content);
+      }
+    }
+  </script>
+</body>
+</html>

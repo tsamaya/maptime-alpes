@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.ie.css" />
+  <![endif]-->
+  <style type="text/css">
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    html, body, #leaflet-map {
+      height: 90%;
+    }
+
+  </style>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+<body>
+  <div id="leaflet-map"></div>
+  <script>
+    var poi = new L.LayerGroup();
+    L.marker([45.19129, 5.73332]).bindPopup('Cowork In Grenoble<br/>12 rue Servan<br/>Meetup MapTime-Alpes').addTo(poi);
+    L.marker([45.18457, 5.7036]).bindPopup('Espace Vertical 3').addTo(poi);
+    L.marker([45.18499, 5.75599]).bindPopup('Espace Vertical 2').addTo(poi);
+    L.marker([45.19863, 5.72462]).bindPopup('La Bastille').addTo(poi);
+    L.marker([45.17447, 5.54346]).bindPopup('Autrans').addTo(poi);
+    L.marker([45.22201, 5.8037]).bindPopup('Montbonnot Saint-Martin').addTo(poi);
+    L.marker([45.0781, 5.77078]).bindPopup('Vizille').addTo(poi);
+
+    var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+
+    var grayscale = L.tileLayer(mbUrl, {
+        id: 'examples.map-20v6611k',
+        attribution: mbAttr
+      }),
+      streets = L.tileLayer(mbUrl, {
+        id: 'examples.map-i875mjb7',
+        attribution: mbAttr
+      }),
+      imagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+      toner = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png'),
+      space = L.tileLayer('http://{s}.tiles.mapbox.com/v3/eleanor.ipncow29/{z}/{x}/{y}.png');
+
+    var map = L.map('leaflet-map', {
+      center: [45.19129, 5.73332],
+      zoom: 10,
+      layers: [grayscale, poi]
+    });
+
+    var baseLayers = {
+      "Grayscale": grayscale,
+      "Streets": streets,
+      "Stamen Toner": toner,
+      "esri imagery": imagery,
+      "MapBox space": space
+    };
+
+    var overlays = {
+      "POI": poi
+    };
+
+    L.control.layers(baseLayers, overlays).addTo(map);
+  </script>
+</body>
+</html>
