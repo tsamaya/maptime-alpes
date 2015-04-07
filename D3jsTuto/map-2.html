@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+    svg {
+        border: 2px solid black;
+        background-color: #a4bac7;
+    }
+    
+    .land {
+        fill: #d7c7ad;
+        stroke: #766951;
+    }
+    
+    .boundary {
+        fill: none;
+        stroke: #a5967e;
+    }
+    
+    .graticule {
+        fill: none;
+        stroke: #fff;
+        stroke-width: .5px;
+    }
+    
+    .graticule:nth-child(2n) {
+        stroke-dasharray: 2, 2;
+    }
+    </style>
+</head>
+
+<body>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v0.min.js"></script>
+    <script src="worldtopo.js"></script>
+    <script>
+    var bestPlaceEver = "maptime";
+
+    var width = 960,
+        height = 480;
+
+    // doc
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    // projection
+    var projection = d3.geo.azimuthalEqualArea()
+        .scale(700) // scales your map
+        .translate([400, 800]); // centers in SVG
+    var path = d3.geo.path()
+        .projection(projection);
+    //data
+    svg.append("path")
+        .datum(topojson.object(worldtopo, worldtopo.objects.land))
+        .attr("class", "land")
+        .attr("d", path);
+    svg.append("path")
+        .datum(topojson.mesh(worldtopo, worldtopo.objects.countries, function(a, b) {
+            return a.id !== b.id;
+        }))
+        .attr("class", "boundary")
+        .attr("d", path);
+
+    //    graticule
+    var graticule = d3.geo.graticule();
+    svg.append("g")
+        .selectAll("path")
+        .data(graticule.lines)
+        .enter().append("path")
+        .attr("d", path)
+        .attr("class", "graticule");
+    </script>
+</body>
+
+</html>
